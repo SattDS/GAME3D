@@ -1,2 +1,2 @@
 extends Node
-var G = Vector3(0,-100,0)
+var G = Vector3(0,-20,0)

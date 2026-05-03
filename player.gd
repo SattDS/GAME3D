@@ -1,9 +1,10 @@
 extends CharacterBody3D
 @export var camera: Camera3D
-@export var sensitivity: float = 0.007
+@export var sensitivity: float = 0.005
+@export var default_speed: float = 100
 @export var speed: float = 100
-
-@export var jump_force = 10000000
+@export var sprint_speed: float = 110
+@export var jump_force = 100
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -13,16 +14,17 @@ func _input(event: InputEvent) -> void:
 		rotate_y(event.relative.x * -sensitivity)
 		camera.rotate_x(event.relative.y * -sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
-
 func _physics_process(delta: float) -> void:
 	
-	
+	if Input.is_action_pressed("sprint"):
+		speed = sprint_speed
+	else:
+		speed = default_speed
 	
 	var input_direction = Vector3.ZERO
 	
 	if Input.is_action_pressed("forward"):
 		input_direction.z = -1
-		
 		
 	if Input.is_action_pressed("back"):
 		input_direction.z = 1
