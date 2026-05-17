@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://2aemml4mydfj"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4qil"]
+direction = Vector3(0, 0, -1)
+spread = 15.825
+initial_velocity_max = 36.399998
+
+[sub_resource type="PrismMesh" id="PrismMesh_5apb5"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="Skin" id="Skin_bj4sj"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" unique_id=309849740]
+emitting = false
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_o4qil")
+draw_pass_1 = SubResource("PrismMesh_5apb5")
+draw_skin = SubResource("Skin_bj4sj")

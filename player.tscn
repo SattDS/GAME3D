@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.67935944, 1.4442139, 0.65515137)
 
-[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("camera")]
+[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("camera", "raycast", "revolver")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
 sensitivity = 0.004
@@ -14,13 +14,19 @@ default_speed = 10.0
 speed = 10.0
 sprint_speed = 15.0
 jump_force = 110
+raycast = NodePath("Camera3D/RayCast3D")
+revolver = NodePath("Camera3D/Revolver")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1698904861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015690327, 0.6988127, 0.004429728)
 fov = 40.788506
 
-[node name="Node3D" parent="Camera3D" unique_id=515132443 instance=ExtResource("2_onrkg")]
+[node name="Revolver" parent="Camera3D" unique_id=515132443 instance=ExtResource("2_onrkg")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.20538992, -0.15916675, -0.77625036)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2012547358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015690327, -0.009726524, -0.33191058)
+target_position = Vector3(0, 0, -100)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1337413217]
 transform = Transform3D(0.9999863, -0.005235964, 0, 0.0052358923, 0.9999726, -0.005235964, 2.7415319e-05, 0.0052358923, 0.9999863, -0.0059546567, 0.2648635, -0.16521965)

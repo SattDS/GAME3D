@@ -5,6 +5,8 @@ extends CharacterBody3D
 @export var speed: float = 100
 @export var sprint_speed: float = 110
 @export var jump_force = 100
+@export var raycast: RayCast3D
+@export var revolver: Revolver
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -48,3 +50,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("shot"):
+		revolver.shot(raycast)
+		
