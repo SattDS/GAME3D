@@ -16,5 +16,6 @@ func shot(raycast: RayCast3D):
 		
 		var particles: GPUParticles3D = Global.create_scene(shot_particles)
 		particles.emitting = true
-		particles.look_at(raycast.global_position)
+		particles.look_at(raycast.get_collision_normal())
+		
 		particles.global_position = raycast.get_collision_point()

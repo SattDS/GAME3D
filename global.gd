@@ -1,6 +1,6 @@
 extends Node
 var G = Vector3(0,-20,0)
-
+var player : Player
 func create_scene(path: String)->Object: 
 	
 	var scene = load(path) # Создается шаблон сцены

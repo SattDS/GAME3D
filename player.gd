@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 @export var camera: Camera3D
 @export var sensitivity: float = 0.005
 @export var default_speed: float = 100
@@ -9,6 +10,7 @@ extends CharacterBody3D
 @export var revolver: Revolver
 
 func _ready() -> void:
+	Global.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _input(event: InputEvent) -> void:

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ebf4q8taalrq"]
+
+[ext_resource type="Script" uid="uid://da18p7ev32xht" path="res://crosshair.gd" id="1_rtxwy"]
+
+[node name="Control" type="Control" unique_id=1241430740]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtxwy")
+curent_collor = Color(1, 1, 1, 1)
+target_collor = Color(0.57254905, 0.11372549, 0.101960786, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1678842746 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 543.0
+offset_right = 975.0
+offset_bottom = 545.0
+rotation = 1.5707964
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=740541646 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 540.0
+offset_right = 976.0
+offset_bottom = 542.0
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=469774608 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = 942.0
+offset_top = 540.0
+offset_right = 957.0
+offset_bottom = 542.0
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=1868816101 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 524.0
+offset_right = 975.0
+offset_bottom = 526.0
+rotation = 1.5707964
