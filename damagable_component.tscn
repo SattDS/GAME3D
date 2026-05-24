@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2mbpkxcclylw"]
+
+[ext_resource type="Script" uid="uid://cwkf6q7tidvba" path="res://damagable_component.gd" id="1_jh0vo"]
+
+[node name="Area3D" type="Area3D" unique_id=1027341484]
+script = ExtResource("1_jh0vo")
