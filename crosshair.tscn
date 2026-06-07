@@ -13,32 +13,43 @@ script = ExtResource("1_rtxwy")
 curent_collor = Color(1, 1, 1, 1)
 target_collor = Color(0.57254905, 0.11372549, 0.101960786, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="." unique_id=1678842746 groups=["crosshaire"]]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=273430255]
 layout_mode = 0
-offset_left = 960.0
-offset_top = 543.0
-offset_right = 975.0
-offset_bottom = 545.0
-rotation = 1.5707964
+offset_right = 3440.0
+offset_bottom = 1440.0
+alignment = 1
 
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=740541646 groups=["crosshaire"]]
-layout_mode = 0
-offset_left = 961.0
-offset_top = 540.0
-offset_right = 976.0
-offset_bottom = 542.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1045449482]
+layout_mode = 2
+alignment = 1
 
-[node name="ColorRect6" type="ColorRect" parent="." unique_id=469774608 groups=["crosshaire"]]
-layout_mode = 0
-offset_left = 942.0
-offset_top = 540.0
-offset_right = 957.0
-offset_bottom = 542.0
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1738166839]
+layout_mode = 2
 
-[node name="ColorRect5" type="ColorRect" parent="." unique_id=1868816101 groups=["crosshaire"]]
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/HBoxContainer/Control" unique_id=1678842746 groups=["crosshaire"]]
 layout_mode = 0
-offset_left = 960.0
-offset_top = 524.0
-offset_right = 975.0
-offset_bottom = 526.0
-rotation = 1.5707964
+offset_left = -17.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = 1.0
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer/Control" unique_id=740541646 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 17.0
+
+[node name="ColorRect6" type="ColorRect" parent="VBoxContainer/HBoxContainer/Control" unique_id=469774608 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -17.0
+offset_right = 1.0
+offset_bottom = -2.0
+
+[node name="ColorRect5" type="ColorRect" parent="VBoxContainer/HBoxContainer/Control" unique_id=1868816101 groups=["crosshaire"]]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 1.0

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://fgo30d0fx5lg"]
+
+[ext_resource type="PackedScene" uid="uid://ddvo7k4do7obg" path="res://cute_slime.glb" id="1_6cljn"]
+[ext_resource type="Script" uid="uid://cg5ira83xi1d6" path="res://slime_model.gd" id="2_3t44b"]
+
+[node name="Sketchfab_Scene" unique_id=392234987 instance=ExtResource("1_6cljn")]
+script = ExtResource("2_3t44b")
+
+[node name="Skeleton3D" parent="Sketchfab_model/root/GLTF_SceneRootNode/Inkchar1_rig_3/GLTF_created_0" parent_id_path=PackedInt32Array(664118925) index="0" unique_id=1327306162]
+bones/2/position = Vector3(0, 0.04037144, 0)
+bones/2/rotation = Quaternion(0.0024799532, -3.5384652e-14, 8.076415e-17, 0.99999696)
+bones/2/scale = Vector3(1.0021847, 0.9948, 1.0181949)

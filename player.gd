@@ -8,6 +8,7 @@ class_name Player
 @export var jump_force = 100
 @export var raycast: RayCast3D
 @export var revolver: Revolver
+@export var damagable_component: DamagableComponent
 
 func _ready() -> void:
 	Global.player = self
@@ -54,4 +55,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("shot"):
 		revolver.shot(raycast)
-		
+
+func _on_area_3d_died() -> void:
+	print("dead")
