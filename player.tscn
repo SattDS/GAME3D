@@ -11,10 +11,11 @@ size = Vector3(0.67935944, 1.4442139, 0.65515137)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
 size = Vector3(0.73620605, 1.4960632, 0.6845703)
 
-[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("camera", "raycast", "revolver", "damagable_component")]
+[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("ui", "camera", "raycast", "revolver", "damagable_component")]
 collision_layer = 257
 collision_mask = 257
 script = ExtResource("1_4flbx")
+ui = NodePath("Camera3D/Control")
 camera = NodePath("Camera3D")
 sensitivity = 0.003
 default_speed = 10.0

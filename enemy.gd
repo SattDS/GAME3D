@@ -6,6 +6,7 @@ var enemy_path = ("res://enemy.tscn")
 var child: bool = false
 @export var slime_model: SlimeModel
 var attacking: bool = false
+var target: DamagableComponent
 
 func _ready() -> void:
 	damagable_component.connect("died",death)
@@ -44,13 +45,20 @@ func attack_jump():
 
 func _on_timer_timeout() -> void:
 	attacking = false
+	if target != null:
+		attack_jump()
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is DamagableComponent:
+		target = area
 		attack_jump() 
-		area.current_health = area.current_health - 20
-		print(area.current_health)
-
-
+		
+		
 func _on_area_3d_area_exited(area: Area3D) -> void:
-	pass # Replace with function body.
+	if area is DamagableComponent:
+		target = null
+
+func deal_damage():
+	if target != null:
+		target.current_health = target.current_health - 20
+		print(target.current_health)
