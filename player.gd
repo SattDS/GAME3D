@@ -14,7 +14,7 @@ class_name Player
 func _ready() -> void:
 	Global.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	damagable_component.connect("damage_taken",damage_taken())
+	damagable_component.connect("damage_taken",damage_taken)
 	
 func damage_taken():
 	ui.take_hit()
