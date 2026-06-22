@@ -29,10 +29,15 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("sprint"):
 		speed = sprint_speed
+		#revolver.weapon_tilt.speed_scale = 1.2
 	else:
 		speed = default_speed
+		#revolver.weapon_tilt.speed_scale = 0.8
 	
 	var input_direction = Vector3.ZERO
+	
+	
+	revolver.weapon_tilt.speed_scale = velocity.length() * 0.2 + 0.3
 	
 	if Input.is_action_pressed("forward"):
 		input_direction.z = -1

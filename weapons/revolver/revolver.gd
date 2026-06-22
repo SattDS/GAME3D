@@ -3,6 +3,7 @@ class_name Revolver
 @onready var muzzle_flash_05: VFXController = $MuzzleFlash_05
 var shot_particles = ("res://hit.tscn")
 @export var damage = 30
+@export var weapon_tilt: AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	pass

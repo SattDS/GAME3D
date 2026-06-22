@@ -8,14 +8,15 @@ func _ready() -> void:
 	
 func take_damage(damage):
 	current_health = current_health - damage
-	damage_taken.emit()
+	damage_taken.emit(damage)
 	if current_health <= 0:
 		death()
 		died.emit()
-
+	
+	
 func death():
 	pass	
 
 signal died
 
-signal damage_taken
+signal damage_taken(damage:float)

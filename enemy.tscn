@@ -252,6 +252,8 @@ slime_model = NodePath("Sketchfab_model")
 
 [node name="Area3D2" parent="." unique_id=1027341484 instance=ExtResource("2_4gyqm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010640621, -0.0025915354, -0.0032681131)
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=1410073981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38087308, 0)

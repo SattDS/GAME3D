@@ -147,6 +147,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_b7g5s"]
 resource_name = "weapon_tilt"
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -155,10 +156,10 @@ tracks/0/path = NodePath("DRG_revolver:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.02, -0.08), Vector3(0, 0.03, -0.06), Vector3(0, 0.02, -0.04), Vector3(0, 0, -0.008), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.064, -0.064), Vector3(0, 0, 0), Vector3(0, -0.064, 0.064)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5h0lk"]
@@ -167,8 +168,9 @@ _data = {
 &"weapon_tilt": SubResource("Animation_b7g5s")
 }
 
-[node name="Node3D" type="Node3D" unique_id=515132443]
+[node name="Node3D" type="Node3D" unique_id=515132443 node_paths=PackedStringArray("weapon_tilt")]
 script = ExtResource("1_hfse1")
+weapon_tilt = NodePath("AnimationPlayer2")
 
 [node name="DRG_revolver" parent="." unique_id=1597068329 instance=ExtResource("1_711mg")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
@@ -194,3 +196,4 @@ volume_db = -20.0
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=161052831]
 libraries/ = SubResource("AnimationLibrary_5h0lk")
+autoplay = &"weapon_tilt"
