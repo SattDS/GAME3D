@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bi5dawy3f8a6d"]
+
+[ext_resource type="Script" uid="uid://bfiq5lr4wre24" path="res://mobs/demon/demon_bullet.gd" id="1_ci0n6"]
+[ext_resource type="Shader" uid="uid://dkxk58u0lyr74" path="res://mobs/demon/new_demon_bullet.gdshader" id="1_o8f3q"]
+[ext_resource type="Texture2D" uid="uid://dhkg4a7elqwux" path="res://assets/images.jpeg" id="2_ci0n6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dxvi5"]
+radius = 0.51706755
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ci0n6"]
+render_priority = 0
+shader = ExtResource("1_o8f3q")
+shader_parameter/ColorParameter = Color(1, 0.30588236, 0, 1)
+shader_parameter/Falloff = 5.0
+shader_parameter/Noise_Texsture = ExtResource("2_ci0n6")
+shader_parameter/Midtones = 0.4
+shader_parameter/Highlights = 0.0250000011875
+shader_parameter/Multiplier = 7.98000037905
+shader_parameter/Aplha = 1.0
+shader_parameter/Roughness = 0.3450000163875
+shader_parameter/Emmision_Strength = 1.490000070775
+shader_parameter/Bump_Strength = 1.0
+shader_parameter/Scroll_Speed = 0.1600000076
+shader_parameter/Scroll_Direction = 0.11200000532
+
+[sub_resource type="SphereMesh" id="SphereMesh_dxvi5"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("ShaderMaterial_ci0n6")
+
+[node name="Area3D" type="Area3D" unique_id=1098693790]
+script = ExtResource("1_ci0n6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=530417340]
+shape = SubResource("SphereShape3D_dxvi5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1303229639]
+mesh = SubResource("SphereMesh_dxvi5")
