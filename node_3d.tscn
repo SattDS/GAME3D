@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cgijjl2t101sr" path="res://enemy.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://2f1smiywl8yd" path="res://demon.tscn" id="3_a0tk4"]
 [ext_resource type="ArrayMesh" uid="uid://c6ufcm0vxh54f" path="res://Untitled.obj" id="4_r3fl7"]
+[ext_resource type="PackedScene" uid="uid://1u2olgyaltw5" path="res://assets/BinbunVFX_Vol2/BattleFX/effects/charge/vfx_blank_charge.tscn" id="5_jka67"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
 sky_horizon_color = Color(0.4756698, 0.6464081, 0.9996399, 1)
@@ -68,3 +69,12 @@ shape = SubResource("ConcavePolygonShape3D_r3fl7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1262220205]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 29.23, 0, 12.301)
 shape = SubResource("ConcavePolygonShape3D_jka67")
+
+[node name="VFXBlankCharge" parent="." unique_id=729787828 instance=ExtResource("5_jka67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.174469, 1.971693, 23.905115)
+primary_color = Color(0.9142335, 0.43647245, 0.121109, 1)
+secondary_color = Color(0, 0, 0, 1)
+tertiary_color = Color(0, 0, 0, 1)
+emission = 4.0
+one_shot = true
+speed_scale = 3.58
