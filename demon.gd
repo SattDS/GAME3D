@@ -9,6 +9,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	look_at(Global.player.global_position)
+	rotation.y = rotation.y + PI
+	rotation.z = 0
+	rotation.x = 0
 	if !is_on_floor():
 		velocity += Global.G * delta
 		

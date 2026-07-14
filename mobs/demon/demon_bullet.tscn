@@ -28,6 +28,7 @@ lightmap_size_hint = Vector2i(17, 9)
 material = SubResource("ShaderMaterial_ci0n6")
 
 [node name="Area3D" type="Area3D" unique_id=1098693790]
+collision_layer = 513
 script = ExtResource("1_ci0n6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=530417340]
@@ -35,3 +36,10 @@ shape = SubResource("SphereShape3D_dxvi5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1303229639]
 mesh = SubResource("SphereMesh_dxvi5")
+
+[node name="life_timer" type="Timer" parent="." unique_id=172068406]
+wait_time = 6.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="life_timer" to="." method="_on_life_timer_timeout"]
