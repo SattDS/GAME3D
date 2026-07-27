@@ -4,9 +4,10 @@ extends State
 @export var raycast: DemonRayCast
 @export var animation_player: AnimationPlayer
 @export var demon_speed = 5
-
+@export var timer: Timer
 
 func Enter():
+	timer.start()
 	animation_player.play("Walk")
 	agent.set_target_position(Global.player.global_position)
 	
@@ -22,7 +23,7 @@ func Physics_Update(delta: float):
 	demon.move_and_slide()
 	
 func Update(delta: float):
-	if raycast.in_range:
+	if raycast.in_range and timer.time_left == 0:
 		demon.velocity = Vector3.ZERO
 		Transitioned.emit(self,"state_attack")
 	

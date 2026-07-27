@@ -5,10 +5,11 @@ extends State
 @export var timer_attack: Timer
 @export var bullet_path: String
 @export var animation_player: AnimationPlayer
+@export var timer: Timer
 var player: Player
 
 func Enter():
-	#timer_attack.start()
+	timer.start()
 	animation_player.play("Shoot")
 	player = Global.player
 
@@ -20,7 +21,7 @@ func Update(delta: float):
 	demon.rotation.y = demon.rotation.y + PI
 	demon.rotation.z = 0
 	demon.rotation.x = 0
-	if !raycast.in_range:
+	if !raycast.in_range and timer.time_left == 0:
 		Transitioned.emit(self,"state_chaise")
 	
 func shot():
