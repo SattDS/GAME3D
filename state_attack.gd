@@ -1,4 +1,5 @@
 extends State
+@export var raycast: DemonRayCast
 @export var demon: EnemyDemon
 @export var gun_barrel_marker: Marker3D
 @export var timer_attack: Timer
@@ -15,7 +16,12 @@ func _ready() -> void:
 	timer_attack.connect("timeout",shot)
 
 func Update(delta: float):
-	pass
+	demon.look_at(Global.player.global_position)
+	demon.rotation.y = demon.rotation.y + PI
+	demon.rotation.z = 0
+	demon.rotation.x = 0
+	if !raycast.in_range:
+		Transitioned.emit(self,"state_chaise")
 	
 func shot():
 	

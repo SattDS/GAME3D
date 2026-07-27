@@ -11,11 +11,12 @@ size = Vector3(0.67935944, 1.4442139, 0.65515137)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
 size = Vector3(0.73620605, 1.4960632, 0.6845703)
 
-[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("ui", "camera", "raycast", "revolver", "damagable_component")]
+[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("ui", "sub_view_port", "camera", "raycast", "revolver", "damagable_component")]
 collision_layer = 257
 collision_mask = 257
 script = ExtResource("1_4flbx")
 ui = NodePath("Camera3D/Control")
+sub_view_port = NodePath("CanvasLayer/SubViewport/SubViewport/Camera3D2")
 camera = NodePath("Camera3D")
 sensitivity = 0.003
 default_speed = 10.0
@@ -28,6 +29,7 @@ damagable_component = NodePath("Area3D")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1698904861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015690327, 0.6988127, 0.004429728)
+cull_mask = 524287
 fov = 90.0
 
 [node name="Control" parent="Camera3D" unique_id=1241430740 node_paths=PackedStringArray("raycast") instance=ExtResource("2_i3pqv")]
@@ -54,5 +56,25 @@ max_health = 200
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2125287036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0044555664, 0.26359558, -0.15771484)
 shape = SubResource("BoxShape3D_sweqy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2098411679]
+
+[node name="SubViewport" type="SubViewportContainer" parent="CanvasLayer" unique_id=495479797]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewport" unique_id=1454039271]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D2" type="Camera3D" parent="CanvasLayer/SubViewport/SubViewport" unique_id=19425472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015690327, 0.6988127, 0.004429728)
+cull_mask = 524288
+fov = 90.0
 
 [connection signal="died" from="Area3D" to="." method="_on_area_3d_died"]

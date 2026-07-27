@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 @export var ui: UI
+@export var sub_view_port: Camera3D
 @export var camera: Camera3D
 @export var sensitivity: float = 0.005
 @export var default_speed: float = 100
@@ -15,7 +16,10 @@ func _ready() -> void:
 	Global.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	damagable_component.connect("damage_taken",damage_taken)
-	
+
+func _process(delta: float) -> void:
+	sub_view_port.global_transform = camera.global_transform
+
 func damage_taken():
 	ui.take_hit()
 	print("1")
