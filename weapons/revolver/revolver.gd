@@ -1,7 +1,7 @@
 extends Node3D
 class_name Revolver
 @onready var muzzle_flash_05: VFXController = $MuzzleFlash_05
-var shot_particles = ("res://hit.tscn")
+var shot_particles = ("res://assets/Stylized-Smoke-For-Godot4.5-main/Smoke_Project/smoke.tscn")
 @export var damage = 30
 @export var weapon_tilt: AnimationPlayer
 
@@ -21,7 +21,7 @@ func shot(raycast: RayCast3D):
 		
 		var particles: GPUParticles3D = Global.create_scene(shot_particles)
 		particles.emitting = true
-		particles.look_at(raycast.get_collision_normal())
+		particles.look_at(raycast.global_position - raycast.get_collision_point())
 		
 		particles.global_position = raycast.get_collision_point()
 		

@@ -1,10 +1,16 @@
 extends Area3D
 class_name DemonBullet
 @export var damage: float
+@export var damagable_component: DamagableComponent
 var speed: float = 20
 var fly_direction: Vector3
 var velocity: Vector3
 
+func death():
+	queue_free()
+
+func _ready() -> void:
+	damagable_component.connect("died",death)
 
 func _process(delta: float) -> void:
 	velocity = fly_direction * speed * delta

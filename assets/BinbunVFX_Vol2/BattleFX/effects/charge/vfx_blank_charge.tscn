@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://l8bb03vyiayb" path="res://assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleChargeBB.gd" id="1_gdaet"]
 [ext_resource type="AudioStream" uid="uid://n70a6wp3g4ks" path="res://assets/jutkiy-zvuk-snaryada.mp3" id="2_i47w5"]
 [ext_resource type="Shader" uid="uid://bjapns335q356" path="res://assets/BinbunVFX_Vol2/BattleFX/shader/attack_particles.gdshader" id="2_v48bc"]
-[ext_resource type="Shader" uid="uid://bh1086mtigsur" path="res://assets/BinbunVFX_Vol2/BattleFX/shader/shield_surface.gdshader" id="3_i47w5"]
+[ext_resource type="Shader" uid="uid://2v32j6nce1gh" path="res://assets/BinbunVFX_Vol2/BattleFX/effects/charge/vfx_blank_charge.gdshader" id="4_v48bc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_epw6m"]
 fractal_octaves = 3
@@ -68,18 +68,14 @@ size = Vector2(1.5, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aon7l"]
 render_priority = 0
-shader = ExtResource("3_i47w5")
-shader_parameter/effect_decay = 0.0
-shader_parameter/primary_color = Color(1, 1, 1, 1)
-shader_parameter/secondary_color = Color(0.37, 0.37, 0.37, 1)
-shader_parameter/tertiary_color = Color(0.08, 0.08, 0.08, 1)
-shader_parameter/emission = 2.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_x1kf4")
-shader_parameter/noise_scale = Vector2(1, 1)
-shader_parameter/noise_scroll = Vector2(-0.4, 0.4)
-shader_parameter/noise_twist = 1.0
-shader_parameter/noise_shape = 1.0
-shader_parameter/double_noise = false
+shader = ExtResource("4_v48bc")
+shader_parameter/particle_h_frames = 8.0
+shader_parameter/particle_v_frames = 8.0
+shader_parameter/particles_anim_loop = false
+shader_parameter/still_frame = -1.0
+shader_parameter/Soft_limit = 0.1
+shader_parameter/blend_scale = 0.1
+shader_parameter/emission_falloff_multiplier = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_awrng"]
 

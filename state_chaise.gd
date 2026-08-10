@@ -21,9 +21,10 @@ func Physics_Update(delta: float):
 	demon.rotation.x = 0
 	demon.velocity = (next_position - demon.global_position).normalized() * demon_speed
 	demon.move_and_slide()
+	animation_player.play("Walk")
 	
 func Update(delta: float):
-	if raycast.in_range and timer.time_left == 0:
+	if raycast.in_range and timer.time_left == 0 and !animation_player.is_playing():
 		demon.velocity = Vector3.ZERO
 		Transitioned.emit(self,"state_attack")
 	
