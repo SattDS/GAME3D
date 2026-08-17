@@ -1,5 +1,6 @@
 extends CharacterBody3D
 class_name Enemy
+@export var agent: NavigationAgent3D
 @export var damagable_component: DamagableComponent
 var speed  : float = 5
 var enemy_path = ("res://enemy.tscn")
@@ -7,23 +8,35 @@ var child: bool = false
 @export var slime_model: SlimeModel
 var attacking: bool = false
 var target: DamagableComponent
+@export var ray_cast: RayCast3D
 
 func _ready() -> void:
 	damagable_component.connect("died",death)
 
 func _physics_process(delta: float) -> void:
+	agent.set_target_position(Global.player.global_position)
+	var next_position
+	if ray_cast.is_colliding():
+		next_position = agent.get_next_path_position()
+	else:
+		next_position = Global.player.global_position
+		
 	if not attacking:	
-		slime_model.run()
+			slime_model.run()
+			
 	look_at(Global.player.global_position)
 	rotation.z = 0
 	rotation.x = 0
-	velocity.z = global_position.direction_to(Global.player.global_position).z 
-	velocity.x = global_position.direction_to(Global.player.global_position).x 
+	velocity.z = global_position.direction_to(next_position).z 
+	velocity.x = global_position.direction_to(next_position).x 
 	velocity.z = velocity.z * speed
 	velocity.x = velocity.x * speed
+	
+	
 	if !is_on_floor():
 		velocity += Global.G * delta
 	move_and_slide()
+	
 
 func death():
 	queue_free()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4hxd6vnuw5og"
+path="res://.godot/imported/Мягко надавили на слайм.mp3-30aba4d63aca37831a2988e5f939e8f6.mp3str"
+
+[deps]
+
+source_file="res://assets/Мягко надавили на слайм.mp3"
+dest_files=["res://.godot/imported/Мягко надавили на слайм.mp3-30aba4d63aca37831a2988e5f939e8f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

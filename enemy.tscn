@@ -5,14 +5,15 @@
 [ext_resource type="Script" uid="uid://cg5ira83xi1d6" path="res://slime_model.gd" id="3_epg4t"]
 [ext_resource type="Texture2D" uid="uid://bupf2r1alynty" path="res://cute_slime_0.png" id="4_3yqyl"]
 [ext_resource type="Texture2D" uid="uid://bq2a4e3dlmcjw" path="res://cute_slime_1.png" id="5_wujgv"]
+[ext_resource type="AudioStream" uid="uid://ibfybvcf40vo" path="res://assets/Звук сжатого слайма.mp3" id="6_3yqyl"]
+[ext_resource type="AudioStream" uid="uid://b4hxd6vnuw5og" path="res://assets/Мягко надавили на слайм.mp3" id="7_wujgv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi2p4"]
 radius = 0.59277344
 height = 1.1855469
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7xaro"]
-radius = 0.48388672
-height = 0.96777344
+[sub_resource type="SphereShape3D" id="SphereShape3D_wujgv"]
+radius = 0.85637957
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k104"]
 size = Vector3(0.7874756, 1.5004883, 2.4242096)
@@ -198,6 +199,21 @@ tracks/5/keys = {
 "method": &"deal_damage"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ЗвукСжатогоСлайма")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_3yqyl")
+}],
+"times": PackedFloat32Array(0.19999999)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0kb4i"]
 resource_name = "Inkchar1_Run"
@@ -237,6 +253,21 @@ tracks/4/path = NodePath("Sketchfab_model/root/GLTF_SceneRootNode/Inkchar1_rig_3
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ЗвукСжатогоСлайма")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_wujgv")
+}],
+"times": PackedFloat32Array(0.06666667)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0g06"]
 _data = {
@@ -245,10 +276,12 @@ _data = {
 &"Inkchar1_Run": SubResource("Animation_0kb4i")
 }
 
-[node name="Node3D" type="CharacterBody3D" unique_id=1176078076 node_paths=PackedStringArray("damagable_component", "slime_model")]
+[node name="Node3D" type="CharacterBody3D" unique_id=1176078076 node_paths=PackedStringArray("agent", "damagable_component", "slime_model", "ray_cast")]
 script = ExtResource("1_7k104")
+agent = NodePath("NavigationAgent3D")
 damagable_component = NodePath("Area3D2")
 slime_model = NodePath("Sketchfab_model")
+ray_cast = NodePath("RayCast3D")
 
 [node name="Area3D2" parent="." unique_id=1027341484 instance=ExtResource("2_4gyqm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010640621, -0.0025915354, -0.0032681131)
@@ -260,8 +293,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38087308, 0)
 shape = SubResource("CapsuleShape3D_qi2p4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1918928831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48635864, 0)
-shape = SubResource("CapsuleShape3D_7xaro")
+transform = Transform3D(1, 1.4820454e-09, -2.5131706e-11, -1.4820454e-09, 0.99942505, -0.033905245, -2.5131706e-11, 0.033905245, 0.99942505, 0, 0.8323059, 0)
+shape = SubResource("SphereShape3D_wujgv")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=374918572]
 collision_layer = 256
@@ -301,16 +334,16 @@ bones/1/name = "spine_1_1"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 2.3841858e-07, 0, 1, 0, -2.3841858e-07, 0, 1, 0, 6.874025e-09, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0, 0.0047746617, 0)
+bones/1/position = Vector3(0, 6.874025e-09, 0)
 bones/1/rotation = Quaternion(0, 1.1920929e-07, 0, 1)
-bones/1/scale = Vector3(1, 0.7721357, 1)
+bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "spine_2_0"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, -5.684342e-14, 0, 0.8, 0, 5.684342e-14, 0, 1, -6.793746e-22, 0.015469737, 1.0968526e-08)
 bones/2/enabled = true
-bones/2/position = Vector3(1.0224051e-16, -0.009943351, -0.0023460947)
-bones/2/rotation = Quaternion(0.0024799532, -3.5384652e-14, 8.076415e-17, 0.99999696)
-bones/2/scale = Vector3(1.3974999, 0.505625, 1.3975)
+bones/2/position = Vector3(-6.793746e-22, 0.015469737, 1.0968526e-08)
+bones/2/rotation = Quaternion(0, -2.842171e-14, 0, 1)
+bones/2/scale = Vector3(1, 0.8, 1)
 
 [node name="Object_7" type="MeshInstance3D" parent="Sketchfab_model/root/GLTF_SceneRootNode/Inkchar1_rig_3/GLTF_created_0/Skeleton3D" unique_id=1896200877]
 mesh = SubResource("ArrayMesh_hb8ge")
@@ -331,6 +364,20 @@ skeleton = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=306859782]
 libraries/ = SubResource("AnimationLibrary_n0g06")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=299613398]
+navigation_layers = 2
+height = 0.01
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+debug_path_custom_point_size = 20.12
+
+[node name="ЗвукСжатогоСлайма" type="AudioStreamPlayer3D" parent="." unique_id=1466437576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0645936, 0.41618937, 0.0024588336)
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=2030324218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05276966, -2.4221916)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

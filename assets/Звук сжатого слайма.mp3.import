@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ibfybvcf40vo"
+path="res://.godot/imported/Звук сжатого слайма.mp3-3c240b36f5d4db92a51e58a135afbe6d.mp3str"
+
+[deps]
+
+source_file="res://assets/Звук сжатого слайма.mp3"
+dest_files=["res://.godot/imported/Звук сжатого слайма.mp3-3c240b36f5d4db92a51e58a135afbe6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

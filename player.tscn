@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ebf4q8taalrq" path="res://crosshair.tscn" id="2_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://day3g2watj1d0" path="res://weapons/revolver/revolver.tscn" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://b2mbpkxcclylw" path="res://damagable_component.tscn" id="4_hqtel"]
+[ext_resource type="PackedScene" uid="uid://bseriibaqtyk5" path="res://sword.tscn" id="4_sweqy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.67935944, 1.4442139, 0.65515137)
@@ -43,6 +44,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015690327, -0.009726524, -
 target_position = Vector3(0, 0, -100)
 collision_mask = 528
 collide_with_areas = true
+
+[node name="sword" parent="Camera3D" unique_id=2060356271 instance=ExtResource("4_sweqy")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1337413217]
 transform = Transform3D(0.9999863, -0.005235964, 0, 0.0052358923, 0.9999726, -0.005235964, 2.7415319e-05, 0.0052358923, 0.9999863, -0.0059546567, 0.2648635, -0.16521965)
