@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://day3g2watj1d0" path="res://weapons/revolver/revolver.tscn" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://b2mbpkxcclylw" path="res://damagable_component.tscn" id="4_hqtel"]
 [ext_resource type="PackedScene" uid="uid://bseriibaqtyk5" path="res://sword.tscn" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://bxptaaxcc3b4u" path="res://target_area.gd" id="6_2hs0m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.67935944, 1.4442139, 0.65515137)
@@ -12,21 +13,25 @@ size = Vector3(0.67935944, 1.4442139, 0.65515137)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
 size = Vector3(0.73620605, 1.4960632, 0.6845703)
 
-[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("ui", "sub_view_port", "camera", "raycast", "revolver", "damagable_component")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jxqw"]
+size = Vector3(1, 1.4608154, 1.9995117)
+
+[node name="Node3D" type="CharacterBody3D" unique_id=224370600 node_paths=PackedStringArray("ui", "sub_view_port", "camera", "raycast", "revolver", "damagable_component", "sword")]
 collision_layer = 257
 collision_mask = 257
 script = ExtResource("1_4flbx")
-ui = NodePath("Camera3D/Control")
-sub_view_port = NodePath("CanvasLayer/SubViewport/SubViewport/Camera3D2")
-camera = NodePath("Camera3D")
 sensitivity = 0.003
 default_speed = 10.0
 speed = 10.0
 sprint_speed = 15.0
 jump_force = 110
+ui = NodePath("Camera3D/Control")
+sub_view_port = NodePath("CanvasLayer/SubViewport/SubViewport/Camera3D2")
+camera = NodePath("Camera3D")
 raycast = NodePath("Camera3D/RayCast3D")
 revolver = NodePath("Camera3D/Revolver")
 damagable_component = NodePath("Area3D")
+sword = NodePath("Camera3D/Node3D/sword")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1698904861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015690327, 0.6988127, 0.004429728)
@@ -37,7 +42,7 @@ fov = 90.0
 raycast = NodePath("../RayCast3D")
 
 [node name="Revolver" parent="Camera3D" unique_id=515132443 instance=ExtResource("2_onrkg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.20538992, -0.15916675, -0.77625036)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.34370792, -0.15916675, -0.77625036)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2012547358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015690327, -0.009726524, -0.33191058)
@@ -45,8 +50,11 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 528
 collide_with_areas = true
 
-[node name="sword" parent="Camera3D" unique_id=2060356271 instance=ExtResource("4_sweqy")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0)
+[node name="Node3D" type="Node3D" parent="Camera3D" unique_id=1184133950]
+transform = Transform3D(0.04914884, -0.043611016, -0.9978388, 0.07396687, 0.9964618, -0.039907567, 0.9960487, -0.07184561, 0.052200716, -0.40345246, -0.24128467, -0.576694)
+
+[node name="sword" parent="Camera3D/Node3D" unique_id=2060356271 node_paths=PackedStringArray("target_area") instance=ExtResource("4_sweqy")]
+target_area = NodePath("../../../Area3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1337413217]
 transform = Transform3D(0.9999863, -0.005235964, 0, 0.0052358923, 0.9999726, -0.005235964, 2.7415319e-05, 0.0052358923, 0.9999863, -0.0059546567, 0.2648635, -0.16521965)
@@ -80,5 +88,14 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015690327, 0.6988127, 0.004429728)
 cull_mask = 524288
 fov = 90.0
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=157567419]
+collision_layer = 528
+collision_mask = 528
+script = ExtResource("6_2hs0m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=693635032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26879907, -1.5059519)
+shape = SubResource("BoxShape3D_1jxqw")
 
 [connection signal="died" from="Area3D" to="." method="_on_area_3d_died"]

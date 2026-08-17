@@ -11,6 +11,7 @@ class_name Player
 @export var raycast: RayCast3D
 @export var revolver: Revolver
 @export var damagable_component: DamagableComponent
+@export var sword: Sword
 
 func _ready() -> void:
 	Global.player = self
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	
 	var input_direction = Vector3.ZERO
 	
-	
+	sword.weapon_tilt.speed_scale = velocity.length() * 0.2 + 0.3
 	revolver.weapon_tilt.speed_scale = velocity.length() * 0.2 + 0.3
 	
 	if Input.is_action_pressed("forward"):
@@ -70,6 +71,10 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("shot"):
 		revolver.shot(raycast)
-
+	
+	if Input.is_action_just_pressed("parry"):
+		sword.parry()
+		
+	
 func _on_area_3d_died() -> void:
 	print("dead")
