@@ -5,7 +5,7 @@ class_name  Sword
 @export var target_area: TargetArea
 func deal_damage():
 	
-	for i in target_area.targets:
+	for i in target_area.targets_areas:
 		if i is DamagableComponent:
 			i.take_damage(50)
 			
